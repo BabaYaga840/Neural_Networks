@@ -4,7 +4,7 @@ class AlexNet(nn.Module):
 	def __init__(self, input_channel, n_classes):
 		super().__init__()
 		self.conv1 = nn.Sequential(
-			nn.Conv2d(input_channel, 96, kernel_size=11, stride=4, padding=3), #(batch_size * 96 * 55 * 55)
+			nn.Conv2d(input_channel, 96, kernel_size=11, stride=4, padding=3), 
 			nn.ReLU(inplace=True), 
 			nn.MaxPool2d(kernel_size=3, stride=2)) 
 		self.conv2 = nn.Sequential(
