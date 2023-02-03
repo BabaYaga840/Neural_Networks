@@ -1,2 +1,2 @@
 # Neural_Networks
-1--> AlexNet
+1--> AlexNet [MNIST]
