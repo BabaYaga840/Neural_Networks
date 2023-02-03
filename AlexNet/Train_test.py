@@ -5,8 +5,12 @@ import numpy as np
 from torch.optim.lr_scheduler import CyclicLR
 from pathlib import Path
 import matplotlib.pyplot as plt
+import yaml
 
-learning_rate=0.001
+config_file = open("/content/drive/MyDrive/AlexNet/config.yaml", 'r')
+config = yaml.safe_load(config_file)
+
+learning_rate=config['parameters']['learning_rate']
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
                                                        
 class Training:
