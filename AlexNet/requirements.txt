@@ -1,0 +1,7 @@
+matplotlib
+numpy
+PyYAML
+torch
+torch_optimizer
+torchstat
+torchvision
