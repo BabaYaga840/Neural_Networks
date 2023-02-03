@@ -100,7 +100,9 @@ class Training:
             train_losses.append(train_loss)
             test_losses.append(test_loss)
             test_accu.append(test_accuracy)
+        plot(train_accu,test_accu,train_losses,test_losses)
         #Plot
+    def plot(train_accu,test_accu,train_losses,test_losses):
         Path('/content/drive/MyDrive/AlexNet/plot').mkdir(parents=True, exist_ok=True)
         plot1 = plt.figure(1)
         plt.plot(train_accu, '-o')
