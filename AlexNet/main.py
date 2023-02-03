@@ -4,11 +4,15 @@ import torchvision
 from AlexNet import AlexNet
 import torchvision.transforms as transforms
 from Train_test import Training
+import yaml
 
-num_epochs=10
-learning_rate=0.001
-image_resolution=224
-n_classes=10
+config_file = open("config.yaml", 'r')
+config = yaml.safe_load(config_file)
+  
+num_epochs=config['parameters']['num_epochs']
+learning_rate=config['parameters']['learning_rate']
+image_resolution=config['parameters']['image_resolution']
+n_classes=config['parameters']['n_classes']
 
 
 transform = transforms.Compose([transforms.ToTensor(), transforms.Resize((image_resolution, image_resolution)), transforms.Normalize((0.1307,), (0.3081,))])
