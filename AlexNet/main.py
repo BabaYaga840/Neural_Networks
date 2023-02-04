@@ -6,7 +6,7 @@ import torchvision.transforms as transforms
 from Train_test import Training
 import yaml
 
-config_file = open("config.yaml", 'r')
+config_file = open("/content/drive/MyDrive/AlexNet/config.yaml", 'r')
 config = yaml.safe_load(config_file)
   
 num_epochs=config['parameters']['num_epochs']
@@ -29,6 +29,6 @@ input_channel = next(iter(train_dataloader))[0].shape[1]
 
 model = AlexNet(input_channel=input_channel, n_classes=n_classes).to(device)
 
-trainer = Training(model=model, optimizer=sgd, learning_rate=learning_rate, 
+trainer = Training(model=model, learning_rate=learning_rate, 
 train_dataloader=train_dataloader, num_epochs=num_epochs,test_dataloader=test_dataloader)
 trainer.runner()
