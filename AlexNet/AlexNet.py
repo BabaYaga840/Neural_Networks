@@ -18,7 +18,8 @@ class AlexNet(nn.Module):
 			nn.ReLU(inplace=True),
 			nn.Conv2d(384, 256, kernel_size=3, padding=1), 
 			nn.ReLU(inplace=True),
-			nn.MaxPool2d(kernel_size=3, stride=2), 
+			nn.MaxPool2d(kernel_size=3, stride=2),
+			nn.Dropout(p=0.5),
 			nn.Flatten()) 
 		self.fc = nn.Sequential(
 			nn.Linear(256 * 6 * 6, 4096), 
@@ -27,8 +28,9 @@ class AlexNet(nn.Module):
 			nn.Linear(4096, 4096), 
 			nn.ReLU(inplace=True),
             nn.Dropout(p=0.5),
-			nn.Linear(4096, n_classes)) 
-	
+			nn.Linear(4096, n_classes)
+			nn.Softmax(dim=1))
+			
 		self.conv1.apply(self.init_weights)
 		self.conv2.apply(self.init_weights)
 		self.conv3.apply(self.init_weights)
@@ -43,5 +45,5 @@ class AlexNet(nn.Module):
 		out = self.conv2(out)
 		out = self.conv3(out)
 		out = self.fc(out)
-
+		
 		return out
