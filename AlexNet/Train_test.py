@@ -23,6 +23,27 @@ class Training:
         self.test_dataloader = test_dataloader
         self.num_epochs = num_epochs
 
+     
+    def plot(train_accu,test_accu,train_losses,test_losses):
+        Path('/content/drive/MyDrive/AlexNet/plot').mkdir(parents=True, exist_ok=True)
+        plot1 = plt.figure(1)
+        plt.plot(train_accu, '-o')
+        plt.plot(test_accu, '-o')
+        plt.xlabel('epoch')
+        plt.ylabel('accuracy')
+        plt.legend(['Train','Test'])
+        plt.title('Train vs Test Accuracy')            
+        plt.savefig('/content/drive/MyDrive/AlexNet/plot/plot_train_test_acc.png')
+            
+        plot2 = plt.figure(2)
+        plt.plot(train_losses,'-o')
+        plt.plot(test_losses,'-o')
+        plt.xlabel('epoch')
+        plt.ylabel('losses')
+        plt.legend(['Train','Test'])
+        plt.title('Train vs Test Losses')
+        plt.savefig('/content/drive/MyDrive/AlexNet/plot/plt_train_test_loss.png')
+        
     def runner(self):
         best_accuracy = float('-inf')
         criterion = nn.CrossEntropyLoss()
@@ -104,26 +125,7 @@ class Training:
             train_losses.append(train_loss)
             test_losses.append(test_loss)
             test_accu.append(test_accuracy)
-        plot(train_accu,test_accu,train_losses,test_losses)
         #Plot
-    def plot(train_accu,test_accu,train_losses,test_losses):
-        Path('/content/drive/MyDrive/AlexNet/plot').mkdir(parents=True, exist_ok=True)
-        plot1 = plt.figure(1)
-        plt.plot(train_accu, '-o')
-        plt.plot(test_accu, '-o')
-        plt.xlabel('epoch')
-        plt.ylabel('accuracy')
-        plt.legend(['Train','Test'])
-        plt.title('Train vs Test Accuracy')            
-        plt.savefig('/content/drive/MyDrive/AlexNet/plot/plot_train_test_acc.png')
-            
-        plot2 = plt.figure(2)
-        plt.plot(train_losses,'-o')
-        plt.plot(test_losses,'-o')
-        plt.xlabel('epoch')
-        plt.ylabel('losses')
-        plt.legend(['Train','Test'])
-        plt.title('Train vs Test Losses')
-        plt.savefig('/content/drive/MyDrive/AlexNet/plot/plt_train_test_loss.png')
-        
+        plot(train_accu,test_accu,train_losses,test_losses)
+       
                                                                                                       
