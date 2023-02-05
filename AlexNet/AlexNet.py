@@ -28,7 +28,7 @@ class AlexNet(nn.Module):
 			nn.Linear(4096, 4096), 
 			nn.ReLU(inplace=True),
             nn.Dropout(p=0.5),
-			nn.Linear(4096, n_classes)
+			nn.Linear(4096, n_classes),
 			nn.Softmax(dim=1))
 			
 		self.conv1.apply(self.init_weights)
@@ -38,7 +38,7 @@ class AlexNet(nn.Module):
 
 	def init_weights(self, layer):
 		if type(layer) == nn.Linear or type(layer) == nn.Conv2d:
-			nn.init.kaiming_normal(layer[-1].weight)
+			nn.init.kaiming_normal_(layer.weight)
 			#nn.init.xavier_uniform_(layer.weight)
 
 	def forward(self, x):
