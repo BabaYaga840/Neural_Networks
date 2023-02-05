@@ -126,6 +126,6 @@ class Training:
             test_losses.append(test_loss)
             test_accu.append(test_accuracy)
         #Plot
-        plot(train_accu,test_accu,train_losses,test_losses)
+        Training.plot(train_accu,test_accu,train_losses,test_losses)
        
                                                                                                       
